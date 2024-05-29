@@ -13,9 +13,17 @@ export const router = createBrowserRouter([
   // { path: "/", element: <SplashScreen /> },
   {
     path: "/",
-    element: <Navbar />,
+    // element:
     children: [
-      { path: "/", element: <Home /> },
+      {
+        path: "/",
+        element: (
+          <>
+            <Navbar />
+            <Home />
+          </>
+        ),
+      },
       { path: "/genre", element: <Genre /> },
       { path: "/genreItems/:genre", element: <GenreItems /> },
       { path: "/Manga", element: <Manga /> },
@@ -24,6 +32,6 @@ export const router = createBrowserRouter([
   },
   { path: "/registration", element: <Registration /> },
   { path: "/login", element: <Login /> },
-  { path: "/Splash", element: <SplashScreen/> },
+  { path: "/Splash", element: <SplashScreen /> },
   { path: "/StreamAnime/:anime/:episode", element: <StreamAnime /> },
 ]);

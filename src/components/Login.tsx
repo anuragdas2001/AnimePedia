@@ -14,11 +14,11 @@ export const Login = () => {
         const user = userCredential.user;
         console.log(user);
         console.log(auth);
-        navigate("/home");
+        navigate("/");
         // ...
       })
       .catch(() => {
-        navigate("/home");
+        navigate("/");
         // const errorCode = error.code;
         // const errorMessage = error.message;
       });

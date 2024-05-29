@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
 const navlinks = [
-  { name: "Home", link: "/home", img: "/haunted-house.png" },
+  { name: "Home", link: "/", img: "/haunted-house.png" },
   { name: "Genre", link: "/genre", img: "/genre.png" },
   { name: "Manga", link: "/Manga", img: "/comic.png" },
   {name:"Favourites",link:"/Favourties",img:"/star.png"}
