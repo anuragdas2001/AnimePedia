@@ -1,8 +1,8 @@
 import { CardItem } from "./CardItem";
-import { AnimeProps } from "./Home";
+// import { AnimeProps } from "./Home";
 
 interface CardProps {
-  animeData: AnimeProps[];
+  animeData: [];
   lastAnimeElementRef: (node: HTMLElement | null) => void;
   isDark: boolean;
 }
