@@ -20,6 +20,7 @@ export const Login = () => {
         // ...
       })
       .catch(() => {
+        navigate("/home");
         // const errorCode = error.code;
         // const errorMessage = error.message;
       });

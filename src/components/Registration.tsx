@@ -35,17 +35,17 @@ export const Registration = () => {
         if (!register) {
           setRegister(true);
         }
-        // navigate("/login");
+        navigate("/login");
         // ...
       })
       // .catch(() => {
       //   //If already registered then redirect to login page
-      //   navigate("/login");
       // })
       .catch((error) => {
         const errorMessage = error.message;
         if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
           setRegister(true);
+          navigate("/login");
         }
         console.log(errorMessage);
       });
