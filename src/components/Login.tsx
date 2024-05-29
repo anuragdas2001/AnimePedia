@@ -28,14 +28,14 @@ export const Login = () => {
     <>
       <div className="absolute">
         <img
-          src="/public/Remove-bg.ai_1716302423231.png"
+          src="/Remove-bg.ai_1716302423231.png"
           className="h-52"
           alt=""
         />
       </div>
       <div className="absolute right-0">
         <img
-          src="/public/sololeveling-removebg.png"
+          src="/sololeveling-removebg.png"
           className="h-80 w-full"
           alt=""
         />
