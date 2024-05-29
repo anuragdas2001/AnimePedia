@@ -1,15 +1,27 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
-import { LoadingGenre } from "./Loading Components/LoadingGenre";
-// axios.get(`https://api.jikan.moe/v4/manga/${id}`)
+import { LoadingHome } from "./Loading Components/LoadingHome";
+interface GenreItem {
+  title: string;
+  img: string;
+  synopsis: string;
+  genres: { name: string }[];
+  type: string;
+  score: string;
+  status: string;
+  episodes: number;
+  year: number;
+  trailer: string;
+}
+
 export const GenreItems = () => {
-  const [genreItems, setGenreItems] = useState([]);
-  const [filteredGenreItems, setFilteredGenreItems] = useState([]);
+  const [genreItems, setGenreItems] = useState<GenreItem[]>([]);
+  const [filteredGenreItems, setFilteredGenreItems] = useState<GenreItem[]>([]);
   const [page, setPage] = useState(1);
-  const perPage = 20; // Number of items per page
-  const { genre } = useParams();
+  const perPage = 20;
+  const { genre } = useParams<{ genre: string }>(); // Ensure genre is a string
   const [loading, setLoading] = useState(false);
   const { isDark } = useDarkMode();
 
@@ -19,7 +31,7 @@ export const GenreItems = () => {
       try {
         const offset = (page - 1) * perPage;
 
-        // Fetch data from both anime APIs
+        // Fetch data from the API
         const requests = [];
         for (let id = offset + 1; id <= offset + perPage; id++) {
           requests.push(axios.get(`https://api.jikan.moe/v4/anime/${id}`));
@@ -29,7 +41,14 @@ export const GenreItems = () => {
 
         const fetchedItems = responses
           .filter((response) => response.status === "fulfilled")
-          .map((response) => response.value.data.data);
+          .map(
+            (response) =>
+              (
+                response as PromiseFulfilledResult<
+                  AxiosResponse<{ data: GenreItem }>
+                >
+              ).value.data.data
+          );
 
         setGenreItems((prevItems) => [...prevItems, ...fetchedItems]);
         setLoading(false);
@@ -40,12 +59,14 @@ export const GenreItems = () => {
     };
 
     fetchData();
-  }, [page, genre]);
+  }, [page]);
 
   useEffect(() => {
     if (genreItems.length > 0) {
       const filteredItems = genreItems.filter((item) =>
-        item.genres.some((g) => g.name.toLowerCase() === genre.toLowerCase())
+        item.genres.some(
+          (g: any) => genre && g.name.toLowerCase() === genre.toLowerCase()
+        )
       );
       setFilteredGenreItems(filteredItems);
     }
@@ -69,7 +90,7 @@ export const GenreItems = () => {
 
   return (
     <>
-      {filteredGenreItems.map((genritem, index) => (
+      {filteredGenreItems.map((genritem: any, index) => (
         <div
           key={index}
           className={`card h-80 card-side mb-2 mt-5 p-3 transform transition-transform duration-300 covered-by-your-grace-regular ${
@@ -79,7 +100,7 @@ export const GenreItems = () => {
           }`}
         >
           <img
-            src={genritem.images.jpg.large_image_url}
+            src={genritem.images.jpg.large_image_url} // Assuming img is the image URL
             alt={genritem.title}
             className="w-40 h-full object-fill rounded-md"
           />
@@ -89,7 +110,9 @@ export const GenreItems = () => {
               <p className="text-xs mb-4">{genritem.synopsis}</p>
               <div className="text-xs font-semibold">
                 {genritem.genres.length > 0 && (
-                  <p>Genre: {genritem.genres.map((g) => g.name).join(", ")}</p>
+                  <p>
+                    Genre: {genritem.genres.map((g: any) => g.name).join(", ")}
+                  </p>
                 )}
               </div>
               <div className="flex justify-start items-start text-xs font-semibold">
@@ -130,7 +153,7 @@ export const GenreItems = () => {
           </div>
         </div>
       ))}
-      {loading && <LoadingGenre />}
+      {loading && <LoadingHome />}
     </>
   );
 };

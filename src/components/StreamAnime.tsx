@@ -7,7 +7,7 @@ export const StreamAnime = () => {
   const [url] = useState("https://api-amvstrm.nyt92.eu.org/api/v2/stream");
   const [data, setData] = useState({});
   const [videoUrl, setVideoUrl] = useState("");
-  const [episodes, setEpisodes] = useState([]);
+  const [episodes, setEpisodes] = useState<number[]>([]);
   const [animeTitle, setAnimeTitle] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [servers, setServers] = useState([]);
@@ -46,7 +46,7 @@ export const StreamAnime = () => {
     fetchAnimeDetails();
   }, [anime, episode]);
 
-  const handleServerChange = (iframe) => {
+  const handleServerChange = (iframe:string) => {
     setVideoUrl(iframe);
   };
 console.log(data)
@@ -68,7 +68,7 @@ console.log(data)
           )}
           <div className="flex flex-wrap justify-start mt-4">
             <h3 className="w-full text-lg font-bold mb-2">Select Server</h3>
-            {servers.map((server, index) => (
+            {servers.map((server:any, index) => (
               <button
                 key={index}
                 onClick={() => handleServerChange(server.iframe)}

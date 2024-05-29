@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 interface CardItemProps {
-  title: string;
   title_english:string;
   title_japanese:string;
   genres: { name: string }[];
@@ -34,9 +33,6 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
     },
     ref
   ) => {
-    // console.log(trailer);
-    console.log(isDark);
-    console.log(title_english)
     return (
       <>
         <div

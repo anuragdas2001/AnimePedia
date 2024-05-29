@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import  { useEffect, useState, useRef, useCallback } from "react";
 import { Card } from "./Card";
 import { LoadingHome } from "./Loading Components/LoadingHome";
 import axios from "axios";
@@ -6,9 +6,22 @@ import { SearchBarAnime } from "./SearchAnime";
 import { useDarkMode } from "../context/DarkModeContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+interface AnimeData {
+  title_english:string;
+  title_japanese:string;
+  genres: { name: string }[];
+  img: string;
+  score: number;
+  status: string;
+  year: number;
+  episodes: number;
+  type: string;
+  synopsis: string;
+  trailer: string;
+  isDark: boolean;
+}
 export const Home = () => {
-  const [anime, setAnime] = useState<AnimeProps[]>([]);
+  const [anime, setAnime] = useState<AnimeData[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,9 +31,10 @@ export const Home = () => {
   const fetchAnime = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get<AnimeData>(
+      const res = await axios.get<{ data: AnimeData[] }>(
         `https://api.jikan.moe/v4/top/anime?limit=20&page=${page}`
       );
+      
       setAnime((prev) => [...prev, ...res.data.data]);
       setIsLoading(false);
     } catch (error) {
@@ -40,9 +54,9 @@ export const Home = () => {
       const searchAnime = async () => {
         try {
           setIsLoading(true);
-          const res = await axios.get<AnimeData>(
+          const res = await axios.get<{ data: AnimeData[] }>(
             `https://api.jikan.moe/v4/anime?q=${searchQuery}`
-          );
+          );          
           setAnime(res.data.data);
           setIsLoading(false);
         } catch (error) {
@@ -58,7 +72,7 @@ export const Home = () => {
   }, [searchQuery, fetchAnime]);
 
   const lastAnimeElementRef = useCallback(
-    (node) => {
+    (node:any) => {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {

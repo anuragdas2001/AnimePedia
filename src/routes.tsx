@@ -3,7 +3,6 @@ import { Navbar } from "./components/Navbar";
 import { Home } from "./components/Home";
 import { Genre } from "./components/Genre";
 import { GenreItems } from "./components/GenreItem";
-import { Recommendation } from "./components/Recommendation";
 import { Manga } from "./components/Manga";
 import { Registration } from "./components/Registration";
 import { SplashScreen } from "./components/SplashScreen";

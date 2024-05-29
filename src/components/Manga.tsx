@@ -4,7 +4,7 @@ import { MangaItems } from "./MangaItems";
 import { LoadingHome } from "./Loading Components/LoadingHome";
 
 export const Manga = () => {
-  const [manga, setManga] = useState([]);
+  const [manga, setManga] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -50,7 +50,7 @@ export const Manga = () => {
 
   return (
     <>
-      {manga.map((m, index) => (
+      {manga.map((m:any, index) => (
         <MangaItems
           key={index}
           title={m.title}
