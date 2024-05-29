@@ -10,7 +10,7 @@ import { Login } from "./components/Login";
 import { StreamAnime } from "./components/StreamAnime";
 import { Favourite } from "./components/Favourites";
 export const router = createBrowserRouter([
-  { path: "/", element: <SplashScreen /> },
+  // { path: "/", element: <SplashScreen /> },
   {
     path: "/",
     element: <Navbar />,
@@ -24,6 +24,6 @@ export const router = createBrowserRouter([
   },
   { path: "/registration", element: <Registration /> },
   { path: "/login", element: <Login /> },
-  // { path: "/Splash", element: <SplashScreen/> },
+  { path: "/Splash", element: <SplashScreen/> },
   { path: "/StreamAnime/:anime/:episode", element: <StreamAnime /> },
 ]);
