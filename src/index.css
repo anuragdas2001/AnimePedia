@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.covered-by-your-grace-regular {
+    font-family: "Covered By Your Grace", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+.manrope {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  /* font-size: ; */
+  font-style: normal;
+}
+
+
+/* [data-theme="light"] {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+[data-theme="dark"] {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+} */
+
+/* Add this CSS to your stylesheet */
+
+
+
+
+  

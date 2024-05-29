@@ -1,53 +1,42 @@
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
-
+import { useDarkMode } from "../context/DarkModeContext";
 const navlinks = [
-  { name: "Home", link: "/" },
-  { name: "Genre", link: "/genre" },
-  { name: "Top", link: "/top" },
-  { name: "Recommendations", link: "/recommendations" },
+  { name: "Home", link: "/home", img: "/public/haunted-house.png" },
+  { name: "Genre", link: "/genre", img: "/public/genre.png" },
+  { name: "Manga", link: "/Manga", img: "/public/comic.png" },
+  {name:"Favourites",link:"/Favourties",img:"/public/star.png"}
+  // { name: "Recommendations", link: "/recommendations" },
 ];
 
 export const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const isDarkFromStorage = localStorage.getItem("isdark") === "true";
-    setIsDark(isDarkFromStorage);
-  }, []);
-
-  useEffect(() => {
-    const htmlElement = document.querySelector("html");
-    htmlElement.setAttribute("data-theme", isDark ? "dark" : "light");
-    // localStorage API can only store string values.
-    localStorage.setItem("isdark", isDark.toString());
-  }, [isDark]);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+  const {isDark,toggleTheme} = useDarkMode();
 
   return (
     <>
       <div className="h-10 flex justify-center border-2 border-orange-500">
-        <ul className=" flex xs:gap-1 sm:gap-5 md:gap-10 lg:gap-20 border-2 border-green-500">
+        <div className="brand absolute m-1 top-0 left-0 border-2 border-purple-500">
+          <h1 className="covered-by-your-grace-regular text-2xl text-yellow-400">Animepedia</h1>
+        </div>
+        <ul className=" flex xs:gap-1 sm:gap-5 md:gap-10 lg:gap-20 border-2 border-green-500 covered-by-your-grace-regular ">
           {navlinks.map((item, index) => (
             <Link to={item.link} key={index}>
               <li
                 key={index}
-                className="border-2 border-blue-500  hover:bg-teal-500 rounded-md py-1 px-3"
+                className="flex items-center hover:bg-teal-500 rounded-md py-1 px-3"
               >
+                <img src={item.img} className="h-8 w-8 mr-2" alt={item.name} />
                 {item.name}
               </li>
             </Link>
           ))}
+
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
               checked={isDark}
-              onChange={toggleTheme}
+              onClick={toggleTheme}
               className="theme-controller"
               value="synthwave"
             />
