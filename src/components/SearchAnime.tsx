@@ -22,7 +22,7 @@ export const SearchBarAnime = ({ onSearch }: any) => {
         className="border border-gray-300 w-11/12 covered-by-your-grace-regular rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <button type="submit">
-        <img className="h-14 w-14 p-4" src="/public/search.png" alt="" />
+        <img className="h-14 w-14 p-4" src="/search.png" alt="" />
       </button>
     </form>
   );

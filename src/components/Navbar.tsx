@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
 const navlinks = [
-  { name: "Home", link: "/home", img: "/public/haunted-house.png" },
-  { name: "Genre", link: "/genre", img: "/public/genre.png" },
-  { name: "Manga", link: "/Manga", img: "/public/comic.png" },
-  {name:"Favourites",link:"/Favourties",img:"/public/star.png"}
+  { name: "Home", link: "/home", img: "/haunted-house.png" },
+  { name: "Genre", link: "/genre", img: "/genre.png" },
+  { name: "Manga", link: "/Manga", img: "/comic.png" },
+  {name:"Favourites",link:"/Favourties",img:"/star.png"}
   // { name: "Recommendations", link: "/recommendations" },
 ];
 
