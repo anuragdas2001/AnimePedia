@@ -14,11 +14,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="h-10 flex justify-center border-2 border-orange-500">
-        <div className="brand absolute m-1 top-0 left-0 border-2 border-purple-500">
+      <div className="h-10 flex justify-center">
+        <div className="brand absolute m-1 top-0 left-0">
           <h1 className="covered-by-your-grace-regular text-2xl text-yellow-400">Animepedia</h1>
         </div>
-        <ul className=" flex xs:gap-1 sm:gap-5 md:gap-10 lg:gap-20 border-2 border-green-500 covered-by-your-grace-regular ">
+        <ul className=" flex xs:gap-1 sm:gap-5 md:gap-10 lg:gap-20 covered-by-your-grace-regular ">
           {navlinks.map((item, index) => (
             <Link to={item.link} key={index}>
               <li

@@ -73,7 +73,7 @@ export const GenreItems = () => {
       {filteredGenreItems.map((genritem, index) => (
         <div
           key={index}
-          className={`card h-80 card-side mb-2 p-3 transform transition-transform duration-300 covered-by-your-grace-regular ${
+          className={`card h-80 card-side mb-2 p-3 mt-5 transform transition-transform duration-300 covered-by-your-grace-regular ${
             isDark
               ? "bg-gradient-to-r from-gray-950 via-blue-950 text-white to-gray-950 hover:translate-y-[-5px] shadow-lg hover:shadow-2xl"
               : "bg-gradient-to-r from-gray-100 via-blue-300 to-gray-100 hover:translate-y-[-5px] shadow-lg hover:shadow-2xl"
