@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Navbar />,
     children: [
-      { path: "/home", element: <Home /> },
+      { path: "/", element: <Home /> },
       { path: "/genre", element: <Genre /> },
       { path: "/genreItems/:genre", element: <GenreItems /> },
       { path: "/Manga", element: <Manga /> },
