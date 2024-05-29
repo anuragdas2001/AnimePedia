@@ -14,9 +14,7 @@ export const Login = () => {
         const user = userCredential.user;
         console.log(user);
         console.log(auth);
-        if (user) {
-          navigate("/home");
-        }
+        navigate("/home");
         // ...
       })
       .catch(() => {
